@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Musee;
+use App\Entity\Ouvrage;
 use App\Entity\Pays;
 use App\Repository\PaysRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -13,18 +13,22 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MuseeType extends AbstractType
+class OuvrageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('nomMus', TextType::class,[
-                'label' => false
-            ] )
-            ->add('nblivres', NumberType::class,[
+            ->add('ISBN',TextType::class,[
                 "label" => false
             ])
+
+            ->add('nbPage',NumberType::class,[
+                "label" => false
+            ])
+            ->add('titre', TextType::class,[
+                "label" => false
+            ])
+
             ->add('codePays', EntityType::class,[
                 'label' => false,
                 'expanded' => false,
@@ -49,7 +53,7 @@ class MuseeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Musee::class,
+            'data_class' => Ouvrage::class,
         ]);
     }
 }

@@ -55,6 +55,11 @@ class Ouvrage
         $this->referencers = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return (string) $this->getISBN();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

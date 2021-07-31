@@ -51,6 +51,12 @@ class Moment
         return $this;
     }
 
+    public function __toString()
+    {
+        return (string) $this->getJour();
+    }
+
+
     /**
      * @return Collection|Visiter[]
      */

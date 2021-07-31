@@ -17,6 +17,7 @@ class MuseeController extends AbstractController
     public function __construct(EntityManagerInterface $entityManager){
         $this ->em = $entityManager;
     }
+
     #[Route('/musee', name: 'musee')]
     public function index(): Response
     {
@@ -31,7 +32,7 @@ class MuseeController extends AbstractController
     #[Route('/musee/add', name: 'musee_add')]
     public function add(Request $request): Response
     {
-
+        $notification = null;
         $musee = new Musee();
         $form = $this->createForm(MuseeType::class, $musee);
         $form ->handleRequest($request);
@@ -42,11 +43,29 @@ class MuseeController extends AbstractController
             $this->em->persist($musee);
             $this->em->flush();
 
-            $this->addFlash("success" , "Musée crée avec succès");
+            $notification = "Le Musée a été enrégistré  avec succès";
+
+            unset($entity);
+            unset($form);
+            $visiter = new Musee();
+            $form = $this->createForm( MuseeType::class, $visiter);
+
         }
 
         return $this->render('musee/add.html.twig', [
             'form' => $form->createView(),
+            'notification' => $notification
         ]);
+    }
+
+    #[Route('/musee/{id}', name: 'musee_remove')]
+    public function deleteProduct(int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $musee = $entityManager->getRepository(Musee::class)->find($id);
+        $entityManager->remove($musee);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("musee");
     }
 }

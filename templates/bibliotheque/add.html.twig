@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un musée{% endblock %}
+{% block title %}Ajouter une Bibliotheque{% endblock %}
 
 {% block content %}
 
@@ -36,19 +36,22 @@
             <div class="px-4 py-5 bg-white sm:p-6">
                 <div class="grid grid-cols-6 gap-6  mx-auto">
 
+
+                    <div class="col-span-6 sm:col-span-4">
+                        {{ form_label(form.ISBN, "ISBN", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                        {{ form_row(form.ISBN,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
+                    </div>
+
                     <div class="col-span-6 sm:col-span-4">
                         {{ form_label(form.nomMus, "Nom du musée", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
                         {{ form_row(form.nomMus,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
                     </div>
 
-                    <div class="col-span-6 sm:col-span-4">
-                        {{ form_label(form.nblivres, "Nombre de livre", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
-                        {{ form_row(form.nblivres,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
-                    </div>
+
 
                     <div class="col-span-6 sm:col-span-4">
-                        {{ form_label(form.codePays, "Pays", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
-                        {{ form_row(form.codePays,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
+                        {{ form_label(form.dateAchat, "Date de l'achat", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                        {{ form_row(form.dateAchat,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
                     </div>
 
                 </div>

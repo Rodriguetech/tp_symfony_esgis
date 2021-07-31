@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un musée{% endblock %}
+{% block title %}Ajouter un Ouvrage{% endblock %}
 
 {% block content %}
 
@@ -37,19 +37,35 @@
                 <div class="grid grid-cols-6 gap-6  mx-auto">
 
                     <div class="col-span-6 sm:col-span-4">
-                        {{ form_label(form.nomMus, "Nom du musée", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
-                        {{ form_row(form.nomMus,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
+                        {{ form_label(form.ISBN, 'ISBN', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                        {{ form_row(form.ISBN,  {'attr': {'class': 'mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'}}) }}
                     </div>
 
-                    <div class="col-span-6 sm:col-span-4">
-                        {{ form_label(form.nblivres, "Nombre de livre", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
-                        {{ form_row(form.nblivres,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
-                    </div>
 
                     <div class="col-span-6 sm:col-span-4">
-                        {{ form_label(form.codePays, "Pays", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                        {{ form_label(form.titre, "Titre de l'ouvrage", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                        {{ form_row(form.titre,  {'attr': {'class': 'mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'}}) }}
+                    </div>
+
+
+                    <div class="col-span-6 sm:col-span-4">
+                        {{ form_label(form.nbPage, 'Nombre de page', {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+                        {{ form_row(form.nbPage,  {'attr': {'class': 'mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'}}) }}
+                    </div>
+
+
+
+                    <div class="col-span-6 sm:col-span-4">
+                        <div class="flex justify-between">
+                            {{ form_label(form.codePays, "Pays", {'class': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+
+                            <a href="{{ path('pays_add') }}" class="text-blue-500">Ajouter un pays</a>
+                        </div>
+
+
                         {{ form_row(form.codePays,  {'attr': {'class': 'mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-4 shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
                     </div>
+
 
                 </div>
             </div>

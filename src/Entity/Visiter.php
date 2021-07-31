@@ -32,6 +32,11 @@ class Visiter
      */
     private $nbvisiteurs;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomMus;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Visiter
     public function setNbvisiteurs(int $nbvisiteurs): self
     {
         $this->nbvisiteurs = $nbvisiteurs;
+
+        return $this;
+    }
+
+    public function getNomMus(): ?string
+    {
+        return $this->nomMus;
+    }
+
+    public function setNomMus(string $nomMus): self
+    {
+        $this->nomMus = $nomMus;
 
         return $this;
     }

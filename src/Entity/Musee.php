@@ -20,7 +20,7 @@ class Musee
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer" , nullable=true)
      */
     private $numMus;
 
@@ -54,6 +54,12 @@ class Musee
         $this->visiters = new ArrayCollection();
         $this->bibliotheques = new ArrayCollection();
     }
+
+    public function __toString()
+    {
+        return (string) $this->getNomMus();
+    }
+
 
     public function getId(): ?int
     {

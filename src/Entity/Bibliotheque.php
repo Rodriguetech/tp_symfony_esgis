@@ -32,6 +32,11 @@ class Bibliotheque
      */
     private $dateAchat;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomMus;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Bibliotheque
     public function setDateAchat(\DateTimeInterface $dateAchat): self
     {
         $this->dateAchat = $dateAchat;
+
+        return $this;
+    }
+
+    public function getNomMus(): ?string
+    {
+        return $this->nomMus;
+    }
+
+    public function setNomMus(string $nomMus): self
+    {
+        $this->nomMus = $nomMus;
 
         return $this;
     }

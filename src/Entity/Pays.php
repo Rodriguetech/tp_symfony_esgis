@@ -51,6 +51,12 @@ class Pays
         $this->sites = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return (string) $this->getCodePays();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

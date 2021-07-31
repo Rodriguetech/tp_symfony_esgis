@@ -2,39 +2,49 @@
 
 namespace App\Form;
 
+use App\Entity\Bibliotheque;
 use App\Entity\Musee;
-use App\Entity\Pays;
-use App\Repository\PaysRepository;
+use App\Entity\Ouvrage;
+use App\Repository\MuseeRepository;
+use App\Repository\OuvrageRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MuseeType extends AbstractType
+class BibliothequeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('nomMus', TextType::class,[
-                'label' => false
-            ] )
-            ->add('nblivres', NumberType::class,[
+            ->add('dateAchat', DateType::class, [
                 "label" => false
             ])
-            ->add('codePays', EntityType::class,[
+            ->add('nomMus', EntityType::class,[
                 'label' => false,
                 'expanded' => false,
                 'multiple' => false,
-                'class' => Pays::class,
-                'query_builder' => function (PaysRepository $er) {
+                'class' => Musee::class,
+                'query_builder' => function (MuseeRepository $er) {
                     return $er->createQueryBuilder('p')
-                        ->orderBy('p.codePays', 'ASC');
+                        ->orderBy('p.nomMus', 'ASC');
                 },
-                'choice_label' => 'codePays',
+                'choice_label' => 'nomMus',
+            ])
+
+            ->add('ISBN', EntityType::class,[
+                'label' => false,
+                'expanded' => false,
+                'multiple' => false,
+                'class' => Ouvrage::class,
+                'query_builder' => function (OuvrageRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->orderBy('p.ISBN', 'ASC');
+                },
+                'choice_label' => 'ISBN',
             ])
 
             ->add('submit', SubmitType::class, [
@@ -49,7 +59,7 @@ class MuseeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Musee::class,
+            'data_class' => Bibliotheque::class,
         ]);
     }
 }
