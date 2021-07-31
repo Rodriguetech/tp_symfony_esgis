@@ -1,20 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegisterController!{% endblock %}
+{% block title %}Inscription{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <style>
+        .alert{
+            position:relative !important;
+            padding:1rem 1rem !important;
+            margin-bottom:1rem !important;
+            border:1px solid transparent!important;
+            border-radius:.25rem !important;
+        }
+        .alert-success{
+            color:white!important;
+            background-color: #8e89c4 !important;
+            border-color: #8f8cc1 !important;
+        }
+    </style>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Cooperations Office/Desktop/tp_symfony_esgis/src/Controller/RegisterController.php'|file_link(0) }}">src/Controller/RegisterController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Cooperations Office/Desktop/tp_symfony_esgis/templates/register/index.html.twig'|file_link(0) }}">templates/register/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+    <div class="container mx-auto mt-8">
+        {% if notification %}
+            <div class="alert alert-success">
+              <p class="text-center">{{ notification }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="container mx-auto flex justify-center mt-8">
+
+
+
+
+
+        <div class="w-full max-w-lg">
+
+            {{ form_start(form) }}
+                <h1  class="text-center mt-8" style="font-size: 30px!important;">Inscription</h1>
+
+            <br><br>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+                    {{ form_label(form.nom, 'Nom', {'label_attr': {'class': 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'}}) }}
+
+                    {{ form_row(form.nom,  {'attr': {'class': 'appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    {{ form_label(form.prenom, 'Prenom', {'label_attr': {'class': 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'}}) }}
+
+                    {{ form_row(form.prenom,  {'attr': {'class': 'appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
+                    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'}}) }}
+
+                    {{ form_row(form.email,  {'attr': {'class': 'appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
+                    {{ form_label(form.password, 'Mot de passe', {'label_attr': {'class': 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'}}) }}
+
+                    {{ form_row(form.password,  {'attr': {'class': 'appearance-none block w-full bg-gray-200 text-gray-700 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white'}}) }}
+
+                </div>
+            </div>
+
+
+
+
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+
+
 {% endblock %}
